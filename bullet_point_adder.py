@@ -2,11 +2,22 @@
 # Выполняет над текстом некоторые действия
 # копирует новый текст в буфер обмена - pyperclip.copy()
 
-import pyperclip
+import pyperclip as pc
 
-text = pyperclip.paste()
+pc.copy('First line \nSecond line \nThree line')
 
-#Делим строки и добавляем звездочки
+text = pc.paste()
+# print(text)
 
-pyperclip.copy(text)
-print(pyperclip.copy(text))
+
+lines = text.split('\n')
+for i in range(len(lines)):
+    # print(lines[i])
+    lines[i] = '* ' + lines[i]
+    # print(lines[i])
+
+text = '\n'.join(lines)
+print(text)
+
+pc.copy(text)
+
